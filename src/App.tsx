@@ -1,5 +1,6 @@
-import Test from '@/client/test'
+import { Button } from '@/components/ui/button'
 import './App.css'
+import Test from '@/client/test'
 
 function App() {
 
@@ -10,6 +11,7 @@ function App() {
         Hello world!
       </h1>
 
+      <Button>asdds</Button>
     </>
   )
 }
