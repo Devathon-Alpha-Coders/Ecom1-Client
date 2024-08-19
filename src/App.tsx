@@ -1,5 +1,5 @@
+import Test from '@/client/test'
 import './App.css'
-import Test from './client/test'
 
 function App() {
 
