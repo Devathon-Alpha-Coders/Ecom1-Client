@@ -7,6 +7,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Pagination } from '@/components/ui/pagination';
 import { ShoppingCart, Heart } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
+import PagesLayout from '../../landingpage/pagesLayout';
 
 interface Product {
   id: number;
@@ -101,11 +102,12 @@ const ProductListingView: React.FC = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    
+    <PagesLayout>
+      <div className=" mx-auto w-full md:p-8 h-auto ">
       <h1 className="text-3xl font-bold mb-8 capitalize">{category} Products</h1>
-      
       <div className="flex flex-col md:flex-row gap-8">
-        <div className="w-full md:w-1/4">
+        <div className="w-full md:w-1/4 md:max-w-[320px] ">
           <Card>
             <CardContent className="p-4">
               <h2 className="text-xl font-semibold mb-4">Filters</h2>
@@ -144,8 +146,7 @@ const ProductListingView: React.FC = () => {
             </CardContent>
           </Card>
         </div>
-
-        <div className="w-full md:w-3/4">
+        <div className="w-full md:w-3/4 ">
           <div className="flex justify-between items-center mb-4">
             <p className="text-sm text-gray-600">{filteredAndSortedProducts.length} products</p>
             <Select value={sortBy} onValueChange={handleSortChange}>
@@ -190,6 +191,7 @@ const ProductListingView: React.FC = () => {
         </div>
       </div>
     </div>
+    </PagesLayout>
   );
 };
 
