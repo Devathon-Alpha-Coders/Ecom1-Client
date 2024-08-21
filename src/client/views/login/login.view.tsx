@@ -59,6 +59,8 @@ export default function LoginPage() {
     e.preventDefault();
     console.log('Login attempt with:', { email, password });
     // Here you would typically handle the login logic
+
+    loginHandler();
   };
 
   return (
