@@ -1,3 +1,4 @@
+import ProductListingPage from "@/client/pages/category/productlisting.page";
 import ForgetpasswordPage from "@/client/pages/forgetpassword.page";
 import LoginPage from "@/client/pages/login.page";
 import ResetPasswordPage from "@/client/pages/resetpassword.page";
@@ -21,6 +22,7 @@ export const AuthRoutes = () => {
             <Route path={getAuthRelativePath(AUTH_URLS.SIGNUP)} element={<SignupPage />} />
             <Route path={getAuthRelativePath(AUTH_URLS.FORGET_PASSWORD)} element={<ForgetpasswordPage />} />
             <Route path={getAuthRelativePath(AUTH_URLS.RESET_PASSWORD)} element={<ResetPasswordPage />} />
+            <Route path={`/`} element={<ProductListingPage />} />
         </Route>
     </Routes>;
 };
