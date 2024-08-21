@@ -1,7 +1,8 @@
+import SignupView from "@/client/views/signup/signup.view"
 
 const SignupPage = () => {
     return (
-        <div>SignupPage</div>
+        <SignupView />
     )
 }
 
