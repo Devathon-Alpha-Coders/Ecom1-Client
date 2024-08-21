@@ -1,19 +1,16 @@
-import { Button } from '@/components/ui/button'
-import './App.css'
-import Test from '@/client/test'
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import './App.css';
 
 
 function App() {
 
   return (
-    <>
-      <Test />
-      <h1 className="text-3xl font-bold underline">
-        Hello world!
-      </h1>
-
-      <Button>asdds</Button>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={'root'} /> {/* 👈 Renders at /app/ */}
+        <Route path="/test" element={'test'} /> {/* 👈 Renders at /app/ */}
+      </Routes>
+    </BrowserRouter>
   )
 }
 

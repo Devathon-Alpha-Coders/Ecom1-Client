@@ -16,9 +16,11 @@
     "@types/node": "^22.4.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "jotai": "^2.9.3",
     "npm-check-updates": "^17.0.6",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.1",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7",
     "vite-tsconfig-paths": "^5.0.1"
