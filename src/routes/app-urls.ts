@@ -29,4 +29,10 @@ export const APP_URLS = {
         ROOT: '/app/',
         FOLDER: '/app/*',
     },
+    // ? App
+    APP: {
+        SIGNOUT: '/app/signout/',
+        ROOT: '/app/',
+        FOLDER: '/app/*',
+    },
 }
