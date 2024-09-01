@@ -12,10 +12,10 @@ export const APP_URLS = {
     AUTH: {
         ROOT: '/auth/',
         FOLDER: '/auth/*',
-        LOGIN: '/auth/login/',
-        SIGNUP: '/auth/signup/',
-        FORGET_PASSWORD: '/auth/forget-password/',
-        RESET_PASSWORD: '/auth/reset-password/',
+        LOGIN: '/auth/login',
+        SIGNUP: '/auth/signup',
+        FORGET_PASSWORD: '/auth/forget-password',
+        RESET_PASSWORD: '/auth/reset-password',
     },
     // ? App
     APP: {
@@ -23,4 +23,5 @@ export const APP_URLS = {
         ROOT: '/app/',
         FOLDER: '/app/*',
     },
+
 }
