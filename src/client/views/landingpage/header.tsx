@@ -27,12 +27,17 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar }) => {
   const redirectToLogin = useCallback(() => navigate(APP_URLS.AUTH.LOGIN), [navigate]);
 
   const handleLogout = useCallback(() => {
-    setAuth((prev: any) => ({
+    setAuth((prev) => ({
       ...prev,
       isAuth: false,
     }));
     // Add any additional logout logic here (e.g., clearing local storage, redirecting)
   }, [setAuth]);
+
+
+  const goToCartHandler = () => {
+    navigate(APP_URLS.APP.CART)
+  }
 
   const handleSearch = useCallback((e: React.FormEvent) => {
     e.preventDefault();
@@ -50,12 +55,12 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar }) => {
           </Button>
           <h1 className="text-2xl font-bold">ShopEase</h1>
         </div>
-        
+
         <form onSubmit={handleSearch} className="flex-grow order-3 lg:order-2 w-full lg:w-auto">
           <div className="flex">
-            <Input 
-              placeholder="Search products..." 
-              className="w-full rounded-l-md border-0" 
+            <Input
+              placeholder="Search products..."
+              className="w-full rounded-l-md border-0"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
@@ -64,14 +69,14 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar }) => {
             </Button>
           </div>
         </form>
-        
+
         <div className="flex items-center justify-end space-x-4 order-2 lg:order-3">
           {auth && auth.isAuth ? (
             <>
               <Button variant="ghost" size="icon" aria-label="Wishlist">
                 <Heart className="h-6 w-6" />
               </Button>
-              <Button variant="ghost" size="icon" aria-label="Cart">
+              <Button variant="ghost" size="icon" aria-label="Cart" onClick={goToCartHandler}>
                 <div className="relative">
                   <ShoppingCart className="h-6 w-6" />
                   <Badge className="absolute -top-2 -right-2 px-1 min-w-[1.25rem] h-5">0</Badge>
@@ -86,10 +91,10 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar }) => {
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
-                  <DropdownMenuItem onSelect={ () => {/*navigate(APP_URLS.USER.PROFILE) */}}>
+                  <DropdownMenuItem onSelect={() => {/*navigate(APP_URLS.USER.PROFILE) */ }}>
                     Profile
                   </DropdownMenuItem>
-                  <DropdownMenuItem onSelect={ () => {/*navigate(APP_URLS.USER.ORDERS) */}}>
+                  <DropdownMenuItem onSelect={() => {/*navigate(APP_URLS.USER.ORDERS) */ }}>
                     My Orders
                   </DropdownMenuItem>
                   <DropdownMenuItem onSelect={handleLogout}>

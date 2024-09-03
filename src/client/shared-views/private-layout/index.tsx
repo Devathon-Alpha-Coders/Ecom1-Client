@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { APP_URLS } from "@/routes/app-urls";
 import authAtom from "@/shared/store/auth.store";
 import { useAtom } from "jotai";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 
 
 export const PrivateLayout = () => {
@@ -20,7 +20,9 @@ export const PrivateLayout = () => {
             <h1>Private Layout</h1>
         </div>
         <div className="flex items-center justify-between bg-slate-50 text-center p-2">
-            <h2 className="">Your App</h2>
+            <Link slot='h4' to={APP_URLS.ROOT}>
+                <h2 className="" >Your App</h2>
+            </Link>
             <Button onClick={redirectToSignout}>Logout</Button>
         </div>
         <Outlet />

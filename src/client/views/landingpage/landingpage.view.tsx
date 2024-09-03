@@ -1,26 +1,19 @@
-import HeroBanner from './herobanner';
-import ProductSection from './productsection';
-import PagesLayout from './pagesLayout';
-
-
+import { useGetMultipleProductsHook } from '@/application/hooks/products.hook';
+import HeroBanner from '@/client/views/landingpage/herobanner';
+import PagesLayout from '@/client/views/landingpage/pagesLayout';
+import ProductSection from '@/client/views/landingpage/productsection';
 
 export default function LandingPage() {
 
-  const featuredProducts = [
-    { name: "Wireless Earbuds", price: "59.99", image: "https://via.placeholder.com/300x200.png?text=Wireless+Earbuds" },
-    { name: "Smart Watch", price: "129.99", image: "https://via.placeholder.com/300x200.png?text=Smart+Watch" },
-    { name: "Laptop Stand", price: "29.99", image: "https://via.placeholder.com/300x200.png?text=Laptop+Stand" },
-    { name: "Bluetooth Speaker", price: "79.99", image: "https://via.placeholder.com/300x200.png?text=Bluetooth+Speaker" },
-    { name: "Fitness Tracker", price: "49.99", image: "https://via.placeholder.com/300x200.png?text=Fitness+Tracker" },
-  ];
+  const {
+    data: products } = useGetMultipleProductsHook(
 
-  const newArrivals = [
-    { name: "Yoga Mat", price: "24.99", image: "https://via.placeholder.com/300x200.png?text=Yoga+Mat" },
-    { name: "Coffee Maker", price: "89.99", image: "https://via.placeholder.com/300x200.png?text=Coffee+Maker" },
-    { name: "Wireless Mouse", price: "19.99", image: "https://via.placeholder.com/300x200.png?text=Wireless+Mouse" },
-    { name: "Air Purifier", price: "149.99", image: "https://via.placeholder.com/300x200.png?text=Air+Purifier" },
-    { name: "Electric Toothbrush", price: "39.99", image: "https://via.placeholder.com/300x200.png?text=Electric+Toothbrush" },
-  ];
+    )
+
+  const featuredProducts = products?.filter(product => product.is_featured)
+
+  // TODO: new arrivals should be filtered by the date of creation  
+  const newArrivals = products?.filter(product => !product.is_featured) // !TEMPORARY
 
   return (
     <PagesLayout>

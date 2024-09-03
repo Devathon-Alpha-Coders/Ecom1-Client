@@ -1,3 +1,10 @@
+/**
+ * * ******* CONVENTIONS ********* * *
+ * 
+ * * Only create a nested object if the routes for that will be refactored into a separate `routes` component. i.e. `AuthRoutes`
+ * * Always start a route with a `/` (forward slash)
+ */
+
 export const APP_URLS = {
     // ? Public
     ROOT: '/',
@@ -22,6 +29,8 @@ export const APP_URLS = {
         SIGNOUT: '/app/signout/',
         ROOT: '/app/',
         FOLDER: '/app/*',
+        CART: '/app/cart/',
+        CHECKOUT: '/app/checkout/',
     },
 
 }
