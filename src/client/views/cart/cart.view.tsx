@@ -2,8 +2,7 @@ import CartDetails from "@/client/views/cart/cart-form"
 
 const CartView = () => {
     return (
-        <div>
-            <h1>Cart Header</h1>
+        <div aria-label="cart-view" className="flex-1 flex flex-col gap-4 overflow-auto ">
             <CartDetails />
         </div>
     )
