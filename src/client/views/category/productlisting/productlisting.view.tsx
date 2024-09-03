@@ -58,9 +58,9 @@ const ProductListingView: React.FC = () => {
 
   const filteredAndSortedProducts = useMemo(() => {
     return dummyProducts
-      .filter(product => 
+      .filter(product =>
         (category === 'All' || product.category === category) &&
-        product.price >= priceMin && 
+        product.price >= priceMin &&
         product.price <= priceMax
       )
       .sort((a, b) => {
@@ -102,95 +102,95 @@ const ProductListingView: React.FC = () => {
   };
 
   return (
-    
+
     <PagesLayout>
       <div className=" mx-auto w-full md:p-8 h-auto ">
-      <h1 className="text-3xl font-bold mb-8 capitalize">{category} Products</h1>
-      <div className="flex flex-col md:flex-row gap-8">
-        <div className="w-full md:w-1/4 md:max-w-[320px] ">
-          <Card>
-            <CardContent className="p-4">
-              <h2 className="text-xl font-semibold mb-4">Filters</h2>
-              <div className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium mb-1">Category</label>
-                  <Select value={category} onValueChange={handleCategoryChange}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select category" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="All">All Categories</SelectItem>
-                      <SelectItem value="Audio">Audio</SelectItem>
-                      <SelectItem value="Wearables">Wearables</SelectItem>
-                      <SelectItem value="Accessories">Accessories</SelectItem>
-                      <SelectItem value="Displays">Displays</SelectItem>
-                      <SelectItem value="Gaming">Gaming</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-1">Price Range</label>
-                  <Slider
-                    min={0}
-                    max={1000}
-                    step={10}
-                    value={[priceMin, priceMax]}
-                    onValueChange={handlePriceChange}
-                  />
-                  <div className="flex justify-between mt-2">
-                    <span>${priceMin}</span>
-                    <span>${priceMax}</span>
+        <h1 className="text-3xl font-bold mb-8 capitalize">{category} Products</h1>
+        <div className="flex flex-col md:flex-row gap-8">
+          <div className="w-full md:w-1/4 md:max-w-[320px] ">
+            <Card>
+              <CardContent className="p-4">
+                <h2 className="text-xl font-semibold mb-4">Filters</h2>
+                <div className="space-y-4">
+                  <div>
+                    <label className="block text-sm font-medium mb-1">Category</label>
+                    <Select value={category} onValueChange={handleCategoryChange}>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select category" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="All">All Categories</SelectItem>
+                        <SelectItem value="Audio">Audio</SelectItem>
+                        <SelectItem value="Wearables">Wearables</SelectItem>
+                        <SelectItem value="Accessories">Accessories</SelectItem>
+                        <SelectItem value="Displays">Displays</SelectItem>
+                        <SelectItem value="Gaming">Gaming</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium mb-1">Price Range</label>
+                    <Slider
+                      min={0}
+                      max={1000}
+                      step={10}
+                      value={[priceMin, priceMax]}
+                      onValueChange={handlePriceChange}
+                    />
+                    <div className="flex justify-between mt-2">
+                      <span>${priceMin}</span>
+                      <span>${priceMax}</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-        <div className="w-full md:w-3/4 ">
-          <div className="flex justify-between items-center mb-4">
-            <p className="text-sm text-gray-600">{filteredAndSortedProducts.length} products</p>
-            <Select value={sortBy} onValueChange={handleSortChange}>
-              <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder="Sort by" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="popularity">Popularity</SelectItem>
-                <SelectItem value="price-low-to-high">Price: Low to High</SelectItem>
-                <SelectItem value="price-high-to-low">Price: High to Low</SelectItem>
-              </SelectContent>
-            </Select>
+              </CardContent>
+            </Card>
           </div>
+          <div className="w-full md:w-3/4 ">
+            <div className="flex justify-between items-center mb-4">
+              <p className="text-sm text-gray-600">{filteredAndSortedProducts.length} products</p>
+              <Select value={sortBy} onValueChange={handleSortChange}>
+                <SelectTrigger className="w-[180px]">
+                  <SelectValue placeholder="Sort by" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="popularity">Popularity</SelectItem>
+                  <SelectItem value="price-low-to-high">Price: Low to High</SelectItem>
+                  <SelectItem value="price-high-to-low">Price: High to Low</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {paginatedProducts.map((product) => (
-              <Card key={product.id} className="overflow-hidden">
-                <img src={product.image} alt={product.name} className="w-full h-48 object-cover" />
-                <CardContent className="p-4">
-                  <h3 className="font-semibold text-lg mb-2">{product.name}</h3>
-                  <p className="text-gray-600 mb-4">${product.price.toFixed(2)}</p>
-                  <div className="flex justify-between">
-                    <Button className="w-3/4" onClick={() => handleAddToCart(product.id)}>
-                      <ShoppingCart className="mr-2 h-4 w-4" /> Add to Cart
-                    </Button>
-                    <Button variant="outline" size="icon" onClick={() => handleAddToWishlist(product.id)}>
-                      <Heart className="h-4 w-4" />
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {paginatedProducts.map((product) => (
+                <Card key={product.id} className="overflow-hidden">
+                  <img src={product.image} alt={product.name} className="w-full h-48 object-cover" />
+                  <CardContent className="p-4">
+                    <h3 className="font-semibold text-lg mb-2">{product.name}</h3>
+                    <p className="text-gray-600 mb-4">${product.price.toFixed(2)}</p>
+                    <div className="flex justify-between">
+                      <Button className="w-3/4" onClick={() => handleAddToCart(product.id)}>
+                        <ShoppingCart className="mr-2 h-4 w-4" /> Add to Cart
+                      </Button>
+                      <Button variant="outline" size="icon" onClick={() => handleAddToWishlist(product.id)}>
+                        <Heart className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
 
-          <div className="mt-8 flex justify-center">
+            {/* <div className="mt-8 flex justify-center">
             <Pagination 
               count={totalPages}
               page={page}
               onChange={handlePageChange}
             />
+          </div> */}
           </div>
         </div>
       </div>
-    </div>
     </PagesLayout>
   );
 };
