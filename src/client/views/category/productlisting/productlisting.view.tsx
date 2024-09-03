@@ -8,33 +8,16 @@ import { Pagination } from '@/components/ui/pagination';
 import { ShoppingCart, Heart } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
 import PagesLayout from '../../landingpage/pagesLayout';
+import { useGetMultipleProductsHook } from '@/application/hooks/products.hook';
 
-interface Product {
-  id: number;
-  name: string;
-  price: number;
-  image: string;
-  category: string;
-}
 
 const ITEMS_PER_PAGE = 9;
 
-const dummyProducts: Product[] = [
-  { id: 1, name: "Wireless Earbuds", price: 59.99, image: "https://via.placeholder.com/300x200.png?text=Wireless+Earbuds", category: "Audio" },
-  { id: 2, name: "Smart Watch", price: 129.99, image: "https://via.placeholder.com/300x200.png?text=Smart+Watch", category: "Wearables" },
-  { id: 3, name: "Laptop Stand", price: 29.99, image: "https://via.placeholder.com/300x200.png?text=Laptop+Stand", category: "Accessories" },
-  { id: 4, name: "Bluetooth Speaker", price: 79.99, image: "https://via.placeholder.com/300x200.png?text=Bluetooth+Speaker", category: "Audio" },
-  { id: 5, name: "Fitness Tracker", price: 49.99, image: "https://via.placeholder.com/300x200.png?text=Fitness+Tracker", category: "Wearables" },
-  { id: 6, name: "Wireless Mouse", price: 19.99, image: "https://via.placeholder.com/300x200.png?text=Wireless+Mouse", category: "Accessories" },
-  { id: 7, name: "4K Monitor", price: 299.99, image: "https://via.placeholder.com/300x200.png?text=4K+Monitor", category: "Displays" },
-  { id: 8, name: "Mechanical Keyboard", price: 89.99, image: "https://via.placeholder.com/300x200.png?text=Mechanical+Keyboard", category: "Accessories" },
-  { id: 9, name: "Noise-Cancelling Headphones", price: 199.99, image: "https://via.placeholder.com/300x200.png?text=Noise-Cancelling+Headphones", category: "Audio" },
-  { id: 10, name: "Portable Charger", price: 39.99, image: "https://via.placeholder.com/300x200.png?text=Portable+Charger", category: "Accessories" },
-  { id: 11, name: "Wireless Charging Pad", price: 24.99, image: "https://via.placeholder.com/300x200.png?text=Wireless+Charging+Pad", category: "Accessories" },
-  { id: 12, name: "Gaming Mouse", price: 69.99, image: "https://via.placeholder.com/300x200.png?text=Gaming+Mouse", category: "Gaming" },
-];
 
 const ProductListingView: React.FC = () => {
+
+  const { data: products } = useGetMultipleProductsHook()
+
   const [searchParams, setSearchParams] = useSearchParams();
   const { toast } = useToast();
 
@@ -56,8 +39,9 @@ const ProductListingView: React.FC = () => {
     setSearchParams(newParams);
   };
 
+  // TODO: Abstract the filtering and sorting logic into a separate function or hook
   const filteredAndSortedProducts = useMemo(() => {
-    return dummyProducts
+    return products
       .filter(product =>
         (category === 'All' || product.category === category) &&
         product.price >= priceMin &&
@@ -182,12 +166,12 @@ const ProductListingView: React.FC = () => {
             </div>
 
             {/* <div className="mt-8 flex justify-center">
-            <Pagination 
-              count={totalPages}
-              page={page}
-              onChange={handlePageChange}
-            />
-          </div> */}
+              <Pagination
+                count={totalPages}
+                page={page}
+                onChange={handlePageChange}
+              />
+            </div> */}
           </div>
         </div>
       </div>
