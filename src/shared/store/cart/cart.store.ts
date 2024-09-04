@@ -18,6 +18,11 @@ const useCartState = () => {
 
     const cartSubtotalPrice = cart.items.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
+    const getCartItemQuantity = (cartItemId: IGetMultipleProductItem['_id']) => {
+        const item = cart.items.find(item => item._id === cartItemId)
+        return item?.quantity || 0
+    }
+
     const addToCart = (product: IGetMultipleProductItem) => {
         const existingItem = cart.items.find(item => item._id === product._id)
         if (existingItem) {
@@ -125,6 +130,7 @@ const useCartState = () => {
         unselectAllCartItems,
         removeMultipleFromCart,
         cartSubtotalPrice,
+        getCartItemQuantity,
     }
 }
 

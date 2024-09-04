@@ -25,7 +25,7 @@ const CartItem = (props: CartItemProps) => {
     unselectCartItem,
     isSelected
   } = props
-  const { _id, name, product_id, price, quantity } = item
+  const { _id, name, product_id, price, quantity, image } = item
 
   const handleAddToCart = () => {
     addToCart(item)
@@ -63,7 +63,7 @@ const CartItem = (props: CartItemProps) => {
         {/* //TODO: Import image paths */}
         <img
           className="max-sm:w-full rounded-lg object-cover"
-          src={'https://images.unsplash.com/photo-1542291026-7eec264c27ff?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2hvZXN8ZW58MHx8MHx8fDA%3D'}
+          src={image}
           alt=""
         />
       </div>
@@ -158,7 +158,6 @@ const CartItemList = (props: ICartItemListProps) => {
             selectCartItem={selectCartItem}
             unselectCartItem={unselectCartItem}
             isSelected={isSelected}
-
           />
         )
       })}

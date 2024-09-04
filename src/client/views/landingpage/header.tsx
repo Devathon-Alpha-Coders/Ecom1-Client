@@ -13,6 +13,7 @@ import useAuthStore from '@/shared/store/auth.store';
 import { Heart, LogIn, LogOut, Menu, Search, ShoppingCart } from 'lucide-react';
 import React, { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import useCartState from 'src/shared/store/cart/cart.store';
 
 interface HeaderProps {
   toggleSidebar: () => void;
@@ -22,6 +23,9 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar }) => {
   const [auth, setAuth] = useAuthStore();
   const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
+
+  const { cartItems } = useCartState();
+  const cartItemCount = cartItems.length;
 
   const redirectToLogin = useCallback(() => navigate(APP_URLS.AUTH.LOGIN), [navigate]);
 
@@ -78,7 +82,9 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar }) => {
               <Button variant="ghost" size="icon" aria-label="Cart" onClick={goToCartHandler}>
                 <div className="relative">
                   <ShoppingCart className="h-6 w-6" />
-                  <Badge className="absolute -top-2 -right-2 px-1 min-w-[1.25rem] h-5">0</Badge>
+                  <Badge className="absolute -top-2 -right-2 px-1 min-w-[1.25rem] h-5">
+                    {cartItemCount}
+                  </Badge>
                 </div>
               </Button>
               <DropdownMenu>
