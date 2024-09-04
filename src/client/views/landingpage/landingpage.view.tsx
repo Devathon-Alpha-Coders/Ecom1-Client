@@ -5,10 +5,7 @@ import ProductSection from '@/client/views/landingpage/productsection';
 
 export default function LandingPage() {
 
-  const {
-    data: products } = useGetMultipleProductsHook(
-
-    )
+  const { data: products } = useGetMultipleProductsHook()
 
   const featuredProducts = products?.filter(product => product.is_featured)
 

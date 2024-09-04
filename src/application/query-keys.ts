@@ -7,4 +7,5 @@
 
 export const QUERY_KEYS = {
     getAllProducts: () => ['products'],
+    getAllCategories: () => ['categories'],
 }

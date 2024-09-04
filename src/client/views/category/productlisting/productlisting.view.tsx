@@ -9,6 +9,7 @@ import { ShoppingCart, Heart } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
 import PagesLayout from '../../landingpage/pagesLayout';
 import { useGetMultipleProductsHook } from '@/application/hooks/products.hook';
+import { useGetMultipleCategoriesHook } from 'src/application/hooks/categories.hook';
 
 
 const ITEMS_PER_PAGE = 9;
@@ -16,6 +17,7 @@ const ITEMS_PER_PAGE = 9;
 
 const ProductListingView: React.FC = () => {
 
+  const { data: categories } = useGetMultipleCategoriesHook()
   const { data: products } = useGetMultipleProductsHook()
 
   const [searchParams, setSearchParams] = useSearchParams();

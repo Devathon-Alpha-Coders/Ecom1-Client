@@ -29,8 +29,9 @@ export const APP_URLS = {
         SIGNOUT: '/app/signout/',
         ROOT: '/app/',
         FOLDER: '/app/*',
+        PRODUCTS: '/app/products',
+        PRODUCTS_CATEGORY: '/app/products/:categoryId',
         CART: '/app/cart/',
         CHECKOUT: '/app/checkout/',
     },
-
 }

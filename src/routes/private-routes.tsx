@@ -6,6 +6,7 @@ import { PrivateLayout } from "@/client/shared-views/private-layout";
 import { APP_URLS } from "@/routes/app-urls";
 import { getLayoutRelativePath } from "@/shared/utils/string.utils";
 import { Route, Routes } from "react-router-dom";
+import ProductsPage from "src/client/pages/products.page";
 
 const PRIVATE_URLS = APP_URLS.APP
 // removes the prefix aPP from the urls
@@ -20,6 +21,7 @@ export const PrivateRoutes = () => {
             <Route path={getAppRelativePath(PRIVATE_URLS.CHECKOUT)} element={<CheckoutPage />} />
             <Route path={getAppRelativePath(PRIVATE_URLS.CART)} element={<CartPage />} />
             <Route path={getAppRelativePath(PRIVATE_URLS.SIGNOUT)} element={<SignoutPage />} />
+            <Route path={getAppRelativePath(PRIVATE_URLS.PRODUCTS)} element={<ProductsPage />} />
         </Route>
     </Routes>;
 };
