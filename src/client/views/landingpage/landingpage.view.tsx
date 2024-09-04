@@ -1,11 +1,10 @@
-import { useGetMultipleProductsHook } from '@/application/hooks/products.hook';
 import HeroBanner from '@/client/views/landingpage/herobanner';
 import PagesLayout from '@/client/views/landingpage/pagesLayout';
 import ProductSection from '@/client/views/landingpage/productsection';
-
+import ProductsHooks from '@/application/hooks/products.hook';
 export default function LandingPage() {
 
-  const { data: products } = useGetMultipleProductsHook()
+  const { data: products } = ProductsHooks.useGetMultipleProductsHook()
 
   const featuredProducts = products?.filter(product => product.is_featured)
 

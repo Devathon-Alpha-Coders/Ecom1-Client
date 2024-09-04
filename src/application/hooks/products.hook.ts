@@ -17,3 +17,9 @@ export const useGetMultipleProductsHook = () => {
 
     return suspenseResponse
 }
+
+const ProductsHooks = {
+    useGetMultipleProductsHook
+}
+
+export default ProductsHooks
