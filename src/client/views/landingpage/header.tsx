@@ -13,6 +13,7 @@ import useAuthStore from '@/shared/store/auth.store';
 import { Heart, LogIn, LogOut, Menu, Search, ShoppingCart } from 'lucide-react';
 import React, { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import AuthHooks from 'src/application/hooks/auth.hook';
 import useCartState from 'src/shared/store/cart/cart.store';
 
 interface HeaderProps {
@@ -20,22 +21,22 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ toggleSidebar }) => {
-  const [auth, setAuth] = useAuthStore();
+  const [auth] = useAuthStore();
   const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
+
+
+  const { firebaseLogout } = AuthHooks.useFirebaseLogoutHook()
 
   const { cartItems } = useCartState();
   const cartItemCount = cartItems.length;
 
   const redirectToLogin = useCallback(() => navigate(APP_URLS.AUTH.LOGIN), [navigate]);
 
-  const handleLogout = useCallback(() => {
-    setAuth((prev) => ({
-      ...prev,
-      isAuth: false,
-    }));
+  const handleLogout = () => {
+    firebaseLogout()
     // Add any additional logout logic here (e.g., clearing local storage, redirecting)
-  }, [setAuth]);
+  };
 
 
   const goToCartHandler = () => {
@@ -121,4 +122,4 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar }) => {
   );
 };
 
-export default React.memo(Header);
+export default Header;

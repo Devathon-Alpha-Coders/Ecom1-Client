@@ -1,18 +1,29 @@
 import { Button } from "@/components/ui/button";
 import { APP_URLS } from "@/routes/app-urls";
 import useAuthStore from "@/shared/store/auth.store";
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 
 
 export const PrivateLayout = () => {
+
+    const { pathname } = useLocation()
 
     const [auth] = useAuthStore()
     const isAuthenticated = auth.isAuth
     const navigate = useNavigate()
 
-    const redirectToLogin = () => navigate(APP_URLS.AUTH.LOGIN)
+    const redirectToLogin = () => navigate({
+        pathname: APP_URLS.AUTH.LOGIN,
+        search: `?redirectTo=${pathname}`
+    })
     const redirectToSignout = () => navigate(APP_URLS.APP.SIGNOUT)
-    if (!isAuthenticated) redirectToLogin()
+
+    useEffect(() => {
+        if (!isAuthenticated) redirectToLogin()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isAuthenticated])
+
 
     return <div aria-label="private-layout" className="h-screen overflow-auto flex flex-col">
         <div aria-label="private-layout-banner" className="bg-blue-500 text-white text-center p-2">
