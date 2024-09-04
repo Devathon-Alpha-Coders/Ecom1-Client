@@ -9,16 +9,19 @@
 import { ProductBaseModel } from "@/shared/models/product.model";
 import { z } from "zod";
 
-const getMultipleResponseSchema = z.array(
-    ProductBaseModel.pick({
-        id: true,
-        name: true,
-        price: true,
-        image: true,
-        category: true,
-        is_featured: true,
-    })
-)
+
+const getMultipleProductItemSchema = ProductBaseModel.pick({
+    id: true,
+    product_id: true,
+    name: true,
+    price: true,
+    image: true,
+    category: true,
+    is_featured: true,
+})
+export type IGetMultipleProductItem = z.infer<typeof getMultipleProductItemSchema>;
+
+const getMultipleResponseSchema = z.array(getMultipleProductItemSchema)
 
 export const getMultipleProductsDtoSchema = z.object({
     // queryParams: z.object({}),

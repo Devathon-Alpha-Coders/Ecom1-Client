@@ -1,6 +1,5 @@
-import authAtom from "@/shared/store/auth.store";
+import useAuthStore from "@/shared/store/auth.store";
 import { cn } from "@/shared/utils";
-import { useAtom } from "jotai";
 import { Outlet } from "react-router-dom";
 
 interface IAuthStatusBar {
@@ -23,7 +22,7 @@ const AuthStatusBar = (props: IAuthStatusBar) => {
 
 export const HomeLayout = () => {
 
-    const [auth] = useAtom(authAtom)
+    const [auth] = useAuthStore()
     const isAuthenticated = auth.isAuth
 
     return <div>

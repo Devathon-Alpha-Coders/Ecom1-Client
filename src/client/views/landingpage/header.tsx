@@ -1,26 +1,25 @@
-import React, { useState, useCallback } from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { ShoppingCart, Search, Heart, Menu, LogIn, LogOut } from 'lucide-react';
-import { useAtom } from 'jotai';
-import authAtom from '@/shared/store/auth.store';
-import { APP_URLS } from '@/routes/app-urls';
-import { useNavigate } from 'react-router-dom';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { Badge } from '@/components/ui/badge';
+import { Input } from '@/components/ui/input';
+import { APP_URLS } from '@/routes/app-urls';
+import useAuthStore from '@/shared/store/auth.store';
+import { Heart, LogIn, LogOut, Menu, Search, ShoppingCart } from 'lucide-react';
+import React, { useCallback, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface HeaderProps {
   toggleSidebar: () => void;
 }
 
 const Header: React.FC<HeaderProps> = ({ toggleSidebar }) => {
-  const [auth, setAuth] = useAtom(authAtom);
+  const [auth, setAuth] = useAuthStore();
   const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
 
