@@ -1,15 +1,14 @@
-import React, { useMemo } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import ProductsHooks from '@/application/hooks/products.hook';
 import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Slider } from '@/components/ui/slider';
-import { Card, CardContent } from '@/components/ui/card';
-import { Pagination } from '@/components/ui/pagination';
-import { ShoppingCart, Heart } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
-import PagesLayout from '../../landingpage/pagesLayout';
-import { useGetMultipleProductsHook } from '@/application/hooks/products.hook';
+import { Heart, ShoppingCart } from 'lucide-react';
+import React, { useMemo } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { useGetMultipleCategoriesHook } from 'src/application/hooks/categories.hook';
+import PagesLayout from '../../landingpage/pagesLayout';
 
 
 const ITEMS_PER_PAGE = 9;
@@ -18,7 +17,7 @@ const ITEMS_PER_PAGE = 9;
 const ProductListingView: React.FC = () => {
 
   const { data: categories } = useGetMultipleCategoriesHook()
-  const { data: products } = useGetMultipleProductsHook()
+  const { data: products } = ProductsHooks.useGetMultipleProductsHook()
 
   const [searchParams, setSearchParams] = useSearchParams();
   const { toast } = useToast();
@@ -79,11 +78,11 @@ const ProductListingView: React.FC = () => {
     updateParams({ page: value });
   };
 
-  const handleAddToCart = (productId: number) => {
+  const handleAddToCart = (productId: string) => {
     toast({ title: "Added to Cart", description: `The item has been added to your cart.${productId}` });
   };
 
-  const handleAddToWishlist = (productId: number) => {
+  const handleAddToWishlist = (productId: string) => {
     toast({ title: "Added to Wishlist", description: `The item has been added to your wishlist.${productId}` });
   };
 

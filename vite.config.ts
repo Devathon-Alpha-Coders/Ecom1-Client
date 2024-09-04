@@ -21,6 +21,7 @@ export default defineConfig({
       "@routes": path.resolve(__dirname, "./src/routes"),
       "@shared": path.resolve(__dirname, "./src/shared"),
       "@utils": path.resolve(__dirname, "./src/shared/utils"),
+      "@config": path.resolve(__dirname, "./src/shared/config"),
     },
   },
   server: {

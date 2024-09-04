@@ -1,0 +1,20 @@
+- Create a new project in Firebase
+- Create a new web app in Firebase
+  - Register the app with a name
+  - install firebase in the project
+    `npm install firebase`
+  - copy the config object and code
+  - paste & initialize in the project path: `shared/config/firebase.config.ts`
+  - Use the environment variable to hide the firebase config secrets
+- Enable the email/password authentication method in the Firebase console
+- Implement the realtime auth-change listener in the project
+  - Create a custom hook to manage the auth state
+  - Create a provider to wrap the app and provide the auth state to the app
+- Signup
+  - Create a signup form
+  - Submit the form data to firebase auth methods and create a new user in Firebase
+- Login
+  - Create a login form
+  - Submit the form data to firebase auth methods and login a user in Firebase
+- Logout
+  - Create a logout method and a button to call it

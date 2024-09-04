@@ -6,6 +6,7 @@ import { PrivateLayout } from "@/client/shared-views/private-layout";
 import { APP_URLS } from "@/routes/app-urls";
 import { getLayoutRelativePath } from "@/shared/utils/string.utils";
 import { Route, Routes } from "react-router-dom";
+import CatchAllPage from "src/client/pages/catch-all.page";
 import ProductsPage from "src/client/pages/products.page";
 
 const PRIVATE_URLS = APP_URLS.APP
@@ -22,6 +23,8 @@ export const PrivateRoutes = () => {
             <Route path={getAppRelativePath(PRIVATE_URLS.CART)} element={<CartPage />} />
             <Route path={getAppRelativePath(PRIVATE_URLS.SIGNOUT)} element={<SignoutPage />} />
             <Route path={getAppRelativePath(PRIVATE_URLS.PRODUCTS)} element={<ProductsPage />} />
+            {/* Catch all route */}
+            <Route path="*" element={<CatchAllPage />} />
         </Route>
     </Routes>;
 };

@@ -6,7 +6,8 @@ import SignupPage from "@/client/pages/signup.page";
 import { AuthLayout } from "@/client/shared-views/auth-layout";
 import { APP_URLS } from "@/routes/app-urls";
 import { getLayoutRelativePath } from "@/shared/utils/string.utils";
-import { Routes, Route } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
+import CatchAllPage from "src/client/pages/catch-all.page";
 
 
 const AUTH_URLS = APP_URLS.AUTH
@@ -23,6 +24,8 @@ export const AuthRoutes = () => {
             <Route path={getAuthRelativePath(AUTH_URLS.FORGET_PASSWORD)} element={<ForgetpasswordPage />} />
             <Route path={getAuthRelativePath(AUTH_URLS.RESET_PASSWORD)} element={<ResetPasswordPage />} />
             <Route path={`/`} element={<ProductListingPage />} />
+            {/* Catch all route */}
+            <Route path="*" element={<CatchAllPage />} />
         </Route>
     </Routes>;
 };

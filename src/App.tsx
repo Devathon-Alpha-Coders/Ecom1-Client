@@ -1,12 +1,14 @@
 import '@/App.css';
-import GlobalSuspenseFallback from "@/components/custom/fallbacks/global-suspense-fallback";
 import GlobalErrorFallback from "@/components/custom/fallbacks/global-error-fallback";
+import GlobalSuspenseFallback from "@/components/custom/fallbacks/global-suspense-fallback";
+import { Toaster } from "@/components/ui/toaster";
 import AppRoutes from "@/routes/app-routes";
-import { queryClient } from "@/shared/config/react-query";
+import { queryClient } from "@/shared/config/react-query.config";
 import { QueryClientProvider, QueryErrorResetBoundary } from "@tanstack/react-query";
 import { Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { BrowserRouter } from "react-router-dom";
+import AuthContainer from 'src/client/shared-views/auth-container/auth-container.view';
 
 function App() {
   return (
@@ -19,7 +21,10 @@ function App() {
           >
             <Suspense fallback={<GlobalSuspenseFallback />}>
               <BrowserRouter>
-                <AppRoutes />
+                <AuthContainer>
+                  <AppRoutes />
+                  <Toaster />
+                </AuthContainer>
               </BrowserRouter>
             </Suspense>
           </ErrorBoundary>
