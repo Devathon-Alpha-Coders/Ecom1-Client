@@ -2,7 +2,7 @@ import '@/App.css';
 import GlobalSuspenseFallback from "@/components/custom/fallbacks/global-suspense-fallback";
 import GlobalErrorFallback from "@/components/custom/fallbacks/global-error-fallback";
 import AppRoutes from "@/routes/app-routes";
-import { queryClient } from "@/shared/config/react-query";
+import { queryClient } from "@/shared/config/react-query.config";
 import { QueryClientProvider, QueryErrorResetBoundary } from "@tanstack/react-query";
 import { Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';

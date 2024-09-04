@@ -10,9 +10,9 @@ export const PrivateLayout = () => {
     const isAuthenticated = auth.isAuth
     const navigate = useNavigate()
 
-    const redirectToHome = () => navigate(APP_URLS.ROOT)
+    const redirectToLogin = () => navigate(APP_URLS.AUTH.LOGIN)
     const redirectToSignout = () => navigate(APP_URLS.APP.SIGNOUT)
-    if (!isAuthenticated) redirectToHome()
+    if (!isAuthenticated) redirectToLogin()
 
     return <div aria-label="private-layout" className="h-screen overflow-auto flex flex-col">
         <div aria-label="private-layout-banner" className="bg-blue-500 text-white text-center p-2">

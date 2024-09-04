@@ -1,6 +1,6 @@
 import ProductsApi from "@/api/products/products.api";
 import { QUERY_KEYS } from "@/application/query-keys";
-import { useSuspenseQueryWithErr } from "@/shared/hooks/useSuspenseQueryWithErr.hook";
+import { useSuspenseQueryWithErr } from "@/shared/hooks/use-suspense-query-with-err.hook";
 
 export const useGetMultipleProductsHook = () => {
 
