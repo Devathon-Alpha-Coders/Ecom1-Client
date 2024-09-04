@@ -17,12 +17,12 @@ const PagesLayout: React.FC<PagesLayout> = ({ children }) => {
   return (
     <div className="min-h-screen bg-gray-50 mb-10">
       <Header toggleSidebar={toggleSidebar} />
-  
-        <div className="flex ">
-          <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
-          <div className='relative w-full min-h-[500px] max-h-[750px] overflow-y-auto  '>
-            {children}
-          </div>
+
+      <div className="flex ">
+        <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
+        <div className='relative w-full min-h-[500px] max-h-[750px] overflow-y-auto  '>
+          {children}
+        </div>
       </div>
     </div>
 

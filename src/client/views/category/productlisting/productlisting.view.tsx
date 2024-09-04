@@ -9,6 +9,7 @@ import { ShoppingCart, Heart } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
 import PagesLayout from '../../landingpage/pagesLayout';
 import { useGetMultipleProductsHook } from '@/application/hooks/products.hook';
+import { useGetMultipleCategoriesHook } from 'src/application/hooks/categories.hook';
 
 
 const ITEMS_PER_PAGE = 9;
@@ -16,6 +17,7 @@ const ITEMS_PER_PAGE = 9;
 
 const ProductListingView: React.FC = () => {
 
+  const { data: categories } = useGetMultipleCategoriesHook()
   const { data: products } = useGetMultipleProductsHook()
 
   const [searchParams, setSearchParams] = useSearchParams();
@@ -147,16 +149,16 @@ const ProductListingView: React.FC = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {paginatedProducts.map((product) => (
-                <Card key={product.id} className="overflow-hidden">
+                <Card key={product._id} className="overflow-hidden">
                   <img src={product.image} alt={product.name} className="w-full h-48 object-cover" />
                   <CardContent className="p-4">
                     <h3 className="font-semibold text-lg mb-2">{product.name}</h3>
                     <p className="text-gray-600 mb-4">${product.price.toFixed(2)}</p>
                     <div className="flex justify-between">
-                      <Button className="w-3/4" onClick={() => handleAddToCart(product.id)}>
+                      <Button className="w-3/4" onClick={() => handleAddToCart(product._id)}>
                         <ShoppingCart className="mr-2 h-4 w-4" /> Add to Cart
                       </Button>
-                      <Button variant="outline" size="icon" onClick={() => handleAddToWishlist(product.id)}>
+                      <Button variant="outline" size="icon" onClick={() => handleAddToWishlist(product._id)}>
                         <Heart className="h-4 w-4" />
                       </Button>
                     </div>

@@ -1,38 +1,46 @@
-import React, { useState, useCallback } from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { ShoppingCart, Search, Heart, Menu, LogIn, LogOut } from 'lucide-react';
-import { useAtom } from 'jotai';
-import authAtom from '@/shared/store/auth.store';
-import { APP_URLS } from '@/routes/app-urls';
-import { useNavigate } from 'react-router-dom';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { Badge } from '@/components/ui/badge';
+import { Input } from '@/components/ui/input';
+import { APP_URLS } from '@/routes/app-urls';
+import useAuthStore from '@/shared/store/auth.store';
+import { Heart, LogIn, LogOut, Menu, Search, ShoppingCart } from 'lucide-react';
+import React, { useCallback, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import useCartState from 'src/shared/store/cart/cart.store';
 
 interface HeaderProps {
   toggleSidebar: () => void;
 }
 
 const Header: React.FC<HeaderProps> = ({ toggleSidebar }) => {
-  const [auth, setAuth] = useAtom(authAtom);
+  const [auth, setAuth] = useAuthStore();
   const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
+
+  const { cartItems } = useCartState();
+  const cartItemCount = cartItems.length;
 
   const redirectToLogin = useCallback(() => navigate(APP_URLS.AUTH.LOGIN), [navigate]);
 
   const handleLogout = useCallback(() => {
-    setAuth((prev: any) => ({
+    setAuth((prev) => ({
       ...prev,
       isAuth: false,
     }));
     // Add any additional logout logic here (e.g., clearing local storage, redirecting)
   }, [setAuth]);
+
+
+  const goToCartHandler = () => {
+    navigate(APP_URLS.APP.CART)
+  }
 
   const handleSearch = useCallback((e: React.FormEvent) => {
     e.preventDefault();
@@ -50,12 +58,12 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar }) => {
           </Button>
           <h1 className="text-2xl font-bold">ShopEase</h1>
         </div>
-        
+
         <form onSubmit={handleSearch} className="flex-grow order-3 lg:order-2 w-full lg:w-auto">
           <div className="flex">
-            <Input 
-              placeholder="Search products..." 
-              className="w-full rounded-l-md border-0" 
+            <Input
+              placeholder="Search products..."
+              className="w-full rounded-l-md border-0"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
@@ -64,17 +72,19 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar }) => {
             </Button>
           </div>
         </form>
-        
+
         <div className="flex items-center justify-end space-x-4 order-2 lg:order-3">
           {auth && auth.isAuth ? (
             <>
               <Button variant="ghost" size="icon" aria-label="Wishlist">
                 <Heart className="h-6 w-6" />
               </Button>
-              <Button variant="ghost" size="icon" aria-label="Cart">
+              <Button variant="ghost" size="icon" aria-label="Cart" onClick={goToCartHandler}>
                 <div className="relative">
                   <ShoppingCart className="h-6 w-6" />
-                  <Badge className="absolute -top-2 -right-2 px-1 min-w-[1.25rem] h-5">0</Badge>
+                  <Badge className="absolute -top-2 -right-2 px-1 min-w-[1.25rem] h-5">
+                    {cartItemCount}
+                  </Badge>
                 </div>
               </Button>
               <DropdownMenu>
@@ -86,10 +96,10 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar }) => {
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
-                  <DropdownMenuItem onSelect={ () => {/*navigate(APP_URLS.USER.PROFILE) */}}>
+                  <DropdownMenuItem onSelect={() => {/*navigate(APP_URLS.USER.PROFILE) */ }}>
                     Profile
                   </DropdownMenuItem>
-                  <DropdownMenuItem onSelect={ () => {/*navigate(APP_URLS.USER.ORDERS) */}}>
+                  <DropdownMenuItem onSelect={() => {/*navigate(APP_URLS.USER.ORDERS) */ }}>
                     My Orders
                   </DropdownMenuItem>
                   <DropdownMenuItem onSelect={handleLogout}>

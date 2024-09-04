@@ -1,10 +1,10 @@
 // import { Button } from "@/components/ui/button";
-// import authAtom from "@/shared/store/auth.store";
+// import useAuthStore from "@/shared/store/auth.store";
 // import { useAtom } from "jotai";
 
 // const LoginView = () => {
 
-//     const [_, setAuth] = useAtom(authAtom)
+//     const [_, setAuth] = useAuthStore()
 
 //     const loginHandler = () => setAuth(prev => ({
 //         ...prev,
@@ -24,19 +24,16 @@
 
 // export default LoginView
 // import { Button } from "@/components/ui/button";
-import authAtom from "@/shared/store/auth.store";
-import { useAtom } from "jotai";
-
-// import React from 'react';
-import { useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
-import { Label } from '@/components/ui/label';
-import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
-import { ShoppingBag } from 'lucide-react';
-import { useNavigate } from "react-router-dom";
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import { APP_URLS } from "@/routes/app-urls";
+import useAuthStore from "@/shared/store/auth.store";
+import { ShoppingBag } from 'lucide-react';
+import { FormEvent, useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
 
@@ -48,14 +45,14 @@ export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-      const [_, setAuth] = useAtom(authAtom)
+  const [_, setAuth] = useAuthStore()
 
-    const loginHandler = () => setAuth(prev => ({
-        ...prev,
-        isAuth: true
-    }))
+  const loginHandler = () => setAuth(prev => ({
+    ...prev,
+    isAuth: true
+  }))
 
-  const handleSubmit = (e:any) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log('Login attempt with:', { email, password });
     // Here you would typically handle the login logic
@@ -113,7 +110,7 @@ export default function LoginPage() {
           <Button variant="ghost" size="sm" onClick={redirectToForgetPassword}>
             Forgot password?
           </Button>
-          <Button variant="ghost" size="sm"  onClick={redirectToCreateAccount}>
+          <Button variant="ghost" size="sm" onClick={redirectToCreateAccount}>
             Create account
           </Button>
         </CardFooter>

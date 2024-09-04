@@ -34,7 +34,8 @@
             "@components/*": ["./src/components/*"],
             "@data/*": ["./src/data/*"],
             "@routes/*": ["./src/routes/*"],
-            "@shared/*": ["./src/shared/*"]
+            "@shared/*": ["./src/shared/*"],
+            "@utils/*": ["./src/shared/utils/*"],
         }
     },
     "include": ["src"]
