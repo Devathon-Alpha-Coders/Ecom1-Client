@@ -11,7 +11,7 @@ import { z } from "zod";
 
 
 const getMultipleProductItemSchema = ProductBaseModel.pick({
-    id: true,
+    _id: true,
     product_id: true,
     name: true,
     price: true,

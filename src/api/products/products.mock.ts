@@ -2,7 +2,7 @@ import { IGetMultipleProductsDto } from "@/api/products/products.dto";
 
 export const mock_products: IGetMultipleProductsDto['response'] = [
     {
-        id: 1,
+        _id: '1',
         product_id: "product_1",
         name: "Wireless Earbuds",
         price: 59.99,
@@ -13,7 +13,7 @@ export const mock_products: IGetMultipleProductsDto['response'] = [
 
     },
     {
-        id: 2,
+        _id: '2',
         product_id: "product_2",
         name: "Smart Watch",
         price: 129.99,
@@ -24,7 +24,7 @@ export const mock_products: IGetMultipleProductsDto['response'] = [
 
     },
     {
-        id: 3,
+        _id: '3',
         product_id: "product_3",
         name: "Laptop Stand",
         price: 29.99,
@@ -35,7 +35,7 @@ export const mock_products: IGetMultipleProductsDto['response'] = [
 
     },
     {
-        id: 4,
+        _id: '4',
         product_id: "product_4",
         name: "Bluetooth Speaker",
         price: 79.99,
@@ -46,7 +46,7 @@ export const mock_products: IGetMultipleProductsDto['response'] = [
 
     },
     {
-        id: 5,
+        _id: '5',
         product_id: "product_5",
         name: "Fitness Tracker",
         price: 49.99,
@@ -57,7 +57,7 @@ export const mock_products: IGetMultipleProductsDto['response'] = [
 
     },
     {
-        id: 6,
+        _id: '6',
         product_id: "product_6",
         name: "Wireless Mouse",
         price: 19.99,
@@ -68,7 +68,7 @@ export const mock_products: IGetMultipleProductsDto['response'] = [
 
     },
     {
-        id: 7,
+        _id: '7',
         product_id: "product_7",
         name: "4K Monitor",
         price: 299.99,
@@ -79,7 +79,7 @@ export const mock_products: IGetMultipleProductsDto['response'] = [
 
     },
     {
-        id: 8,
+        _id: '8',
         product_id: "product_8",
         name: "Mechanical Keyboard",
         price: 89.99,
@@ -90,7 +90,7 @@ export const mock_products: IGetMultipleProductsDto['response'] = [
 
     },
     {
-        id: 9,
+        _id: '9',
         product_id: "product_9",
         name: "Noise-Cancelling Headphones",
         price: 199.99,
@@ -101,7 +101,7 @@ export const mock_products: IGetMultipleProductsDto['response'] = [
 
     },
     {
-        id: 10,
+        _id: '10',
         product_id: "product_10",
         name: "Portable Charger",
         price: 39.99,
@@ -112,7 +112,7 @@ export const mock_products: IGetMultipleProductsDto['response'] = [
 
     },
     {
-        id: 11,
+        _id: '11',
         product_id: "product_11",
         name: "Wireless Charging Pad",
         price: 24.99,
@@ -123,7 +123,7 @@ export const mock_products: IGetMultipleProductsDto['response'] = [
 
     },
     {
-        id: 12,
+        _id: '12',
         product_id: "product_12",
         name: "Gaming Mouse",
         price: 69.99,

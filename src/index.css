@@ -30,6 +30,13 @@ body {
         background-color: lighten(#cccccc, 0.2);
     }
     /* Scrollbar Styling - Start End */
+
+
+    /* Image Styling - Start */
+    img {
+        @apply rounded-lg object-cover max-h-full h-min w-min;
+    }
+    /* Image Styling - End */
 }
 #root {
     /* overflow: auto; */

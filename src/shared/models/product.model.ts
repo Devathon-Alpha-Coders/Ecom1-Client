@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 export const ProductBaseModel = z.object({
-    id: z.number().min(1),
+    _id: z.string().min(1),
     product_id: z.string().min(1),
     name: z.string().min(1),
     price: z.number().min(0),
